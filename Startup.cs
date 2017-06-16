@@ -1,13 +1,13 @@
-using System.Collections.Generic;
+using System;
 using System.IO;
-using Microsoft.AspNet.Builder;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
-using System;
-using System.Data.SqlClient;
+using Microsoft.AspNet.Builder;
 
-namespace HairSalon
+namespace BandTracker
 {
   public class Startup
   {

@@ -21,7 +21,7 @@ namespace BandTracker
       int result = Venue.GetAll().Count;
 
       //Assert
-       Assert.Equal(0, result);
+      Assert.Equal(0, result);
     }
 
 

@@ -17,11 +17,11 @@ namespace BandTracker
     [Fact]
     public void Test_DatabaseEmptyAtFirst()
     {
-     //Arrange, Act
-     int result = Band.GetAll().Count;
+      //Arrange, Act
+      int result = Band.GetAll().Count;
 
-     //Assert
-     Assert.Equal(0, result);
+      //Assert
+      Assert.Equal(0, result);
     }
 
 
