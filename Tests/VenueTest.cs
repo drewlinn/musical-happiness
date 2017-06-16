@@ -63,6 +63,23 @@ namespace BandTracker
       Assert.Equal(testVenue, foundVenue);
     }
 
+    [Fact]
+    public void Test_Update_UpdatesVenueInDatabase()
+    {
+      //Arrange
+      Venue testVenue = new Venue("Roseland Theatre", "789 Rose Street");
+      testVenue.Save();
+      string newAddress = "987 New Street";
+      //Act
+      testVenue.Update("Roseland Theatre", "987 New Street");
+      string result = testVenue.GetAddress();
+
+      //Assert
+      Assert.Equal(newAddress, result);
+    }
+
+
+
     public void Dispose()
     {
       Band.DeleteAll();

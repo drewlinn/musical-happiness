@@ -67,14 +67,14 @@ namespace BandTracker
       return false;
     }
     else
-     {
+    {
       Band newBand = (Band) otherBand;
       bool idEquality = (this.GetId() == newBand.GetId());
       bool nameEquality = (this.GetName() == newBand.GetName());
       bool genreEquality = (this.GetGenre() == newBand.GetGenre());
       return (idEquality && nameEquality && genreEquality);
-     }
-   }
+      }
+    }
 
    public override int GetHashCode()
    {

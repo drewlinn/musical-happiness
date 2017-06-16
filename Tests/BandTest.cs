@@ -50,18 +50,18 @@ namespace BandTracker
      }
 
      [Fact]
-    public void Test_Find_FindBandInDatabase()
-    {
-      //Arrange
-      Band testBand = new Band("The Doors", "Classic Rock");
-      testBand.Save();
+     public void Test_Find_FindBandInDatabase()
+     {
+       //Arrange
+       Band testBand = new Band("The Doors", "Classic Rock");
+       testBand.Save();
 
-      //Act
-      Band foundBand = Band.Find(testBand.GetId());
+       //Act
+       Band foundBand = Band.Find(testBand.GetId());
 
-      //Assert
-      Assert.Equal(testBand, foundBand);
-    }
+       //Assert
+       Assert.Equal(testBand, foundBand);
+     }
 
     public void Dispose()
     {
