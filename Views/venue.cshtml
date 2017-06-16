@@ -1,0 +1,20 @@
+<h2>@Model["venue"].GetName(). </h2>
+<h4>Address: @Model["venue"].GetAddress()</h4>
+@if(@Model["bands"].Count == 0)
+{
+  <p>There are no bands</p>
+}
+else
+{
+  <ol>
+    @foreach (var band in @Model["bands"])
+    {
+      <li><a href="/bands/@band.GetId()">@band.GetName()</li>
+    }
+  </ol>
+
+}
+
+<p><a href="/venues">View all venues</a></p>
+<p><a href="/venue/new">Add a new venue</a></p>
+<p><a href="/">Return home</a></p>
