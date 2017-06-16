@@ -125,26 +125,26 @@ namespace BandTracker
     }
 
 
-    // [Fact]
-    // public void Delete_DeletesVenueAssociationsFromDatabase_VenueList()
-    // {
-    //   //Arrange
-    //   Band testBand = new Band("Explosions in the Sky", "Post-Rock");
-    //   testBand.Save();
-    //
-    //   Venue testVenue = new Venue("Skybar", "890 Sky Way");
-    //   testVenue.Save();
-    //
-    //   //Act
-    //   testVenue.AddBand(testBand);
-    //   testVenue.Delete();
-    //
-    //   List<Venue> resultBandVenue = testBand.GetVenues();
-    //   List<Venue> testBandVenue = new List<Venue> {};
-    //
-    //   //Assert
-    //   Assert.Equal(testBandVenue, resultBandVenue);
-    // }
+    [Fact]
+    public void Delete_DeletesVenueAssociationsFromDatabase_VenueList()
+    {
+      //Arrange
+      Band testBand = new Band("Explosions in the Sky", "Post-Rock");
+      testBand.Save();
+
+      Venue testVenue = new Venue("Skybar", "890 Sky Way");
+      testVenue.Save();
+
+      //Act
+      testVenue.AddBand(testBand);
+      testVenue.Delete();
+
+      List<Venue> resultBandVenue = testBand.GetVenues();
+      List<Venue> testBandVenue = new List<Venue> {};
+
+      //Assert
+      Assert.Equal(testBandVenue, resultBandVenue);
+    }
 
     public void Dispose()
     {

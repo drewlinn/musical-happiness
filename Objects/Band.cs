@@ -218,22 +218,22 @@ namespace BandTracker
       }
     }
 
-    // public void Delete()
-    // {
-    //   SqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("DELETE FROM bands WHERE id = @bandId; DELETE FROM venues_bands WHERE band_id = @bandId;", conn);
-    //   SqlParameter bandIdParameter = new SqlParameter("@bandId", this.GetId());
-    //
-    //   cmd.Parameters.Add(bandIdParameter);
-    //   cmd.ExecuteNonQuery();
-    //
-    //   if (conn != null)
-    //   {
-    //    conn.Close();
-    //   }
-    // }
+    public void Delete()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("DELETE FROM bands WHERE id = @bandId; DELETE FROM venues_bands WHERE band_id = @bandId;", conn);
+      SqlParameter bandIdParameter = new SqlParameter("@bandId", this.GetId());
+
+      cmd.Parameters.Add(bandIdParameter);
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+       conn.Close();
+      }
+    }
 
     public static void DeleteAll()
     {
