@@ -24,6 +24,16 @@ namespace BandTracker
       Assert.Equal(0, result);
     }
 
+    [Fact]
+    public void Test_Override_ObjectsAreEqual()
+    {
+      //Arrange, Act
+      Venue Venue1 = new Venue("The House of Rock", "1234 Street");
+      Venue Venue2 = new Venue("The House of Rock", "1234 Street");
+      //Assert
+      Assert.Equal(Venue1, Venue2);
+    }
+
 
 
     public void Dispose()

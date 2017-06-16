@@ -24,7 +24,15 @@ namespace BandTracker
       Assert.Equal(0, result);
     }
 
-
+    [Fact]
+    public void Test_Override_ObjectsAreEqual()
+    {
+      //Arrange, Act
+      Band Band1 = new Band("Black Sabbath", "Metal");
+      Band Band2 = new Band("Black Sabbath", "Metal");
+      //Assert
+      Assert.Equal(Band1, Band2);
+    }
 
     public void Dispose()
     {
