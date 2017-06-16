@@ -143,6 +143,27 @@ namespace BandTracker
       return foundBand;
     }
 
+    public void Update(string name, string genre)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("UPDATE bands SET name = @name, genre = @genre WHERE id = @Id;", conn);
+
+      SqlParameter namePara = new SqlParameter("@name", name);
+      SqlParameter genrePara = new SqlParameter("@genre", genre);
+      SqlParameter idPara = new SqlParameter("@Id", this.GetId());
+
+      cmd.Parameters.Add(namePara);
+      cmd.Parameters.Add(genrePara);
+      cmd.Parameters.Add(idPara);
+
+      this._name = name;
+      this._genre = genre;
+      cmd.ExecuteNonQuery();
+      conn.Close();
+    }
+
     public static void DeleteAll()
     {
      SqlConnection conn = DB.Connection();

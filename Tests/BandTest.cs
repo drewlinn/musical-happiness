@@ -35,10 +35,10 @@ namespace BandTracker
     }
 
     [Fact]
-     public void Test_Save_SavesToDatabase()
-     {
+    public void Test_Save_SavesToDatabase()
+    {
       //Arrange
-     Band testBand = new Band("A Tribe Called Quest", "Hip-Hop");
+      Band testBand = new Band("A Tribe Called Quest", "Hip-Hop");
 
       //Act
       testBand.Save();
@@ -47,21 +47,36 @@ namespace BandTracker
 
       //Assert
       Assert.Equal(testList, result);
-     }
+    }
 
-     [Fact]
-     public void Test_Find_FindBandInDatabase()
-     {
-       //Arrange
-       Band testBand = new Band("The Doors", "Classic Rock");
-       testBand.Save();
+    [Fact]
+      public void Test_Find_FindBandInDatabase()
+      {
+      //Arrange
+      Band testBand = new Band("The Doors", "Classic Rock");
+      testBand.Save();
 
-       //Act
-       Band foundBand = Band.Find(testBand.GetId());
+      //Act
+      Band foundBand = Band.Find(testBand.GetId());
 
-       //Assert
-       Assert.Equal(testBand, foundBand);
-     }
+      //Assert
+      Assert.Equal(testBand, foundBand);
+    }
+
+    [Fact]
+    public void Test_Update_UpdatesBandInDatabase()
+    {
+      //Arrange
+      Band testBand = new Band("Animal Collective", "Experimental");
+      testBand.Save();
+      string newGenre = "Freak Folk";
+      //Act
+      testBand.Update("Animal Collective", "Freak Folk");
+      string result = testBand.GetGenre();
+
+      //Assert
+      Assert.Equal(newGenre, result);
+    }
 
     public void Dispose()
     {
