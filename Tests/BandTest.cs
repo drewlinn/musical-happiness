@@ -78,6 +78,69 @@ namespace BandTracker
       Assert.Equal(newGenre, result);
     }
 
+    [Fact]
+    public void GetVenues_ReturnsAllBandVenues_VenueList()
+    {
+      //Arrange
+      Band testBand = new Band("Radiohead", "Experimental Rock");
+      testBand.Save();
+
+      Venue testVenues1 = new Venue("The Collosseum", "456 Great Big Way");
+      testVenues1.Save();
+
+      Venue testVenues2 = new Venue("ThunderDome", "129 BeyondThe Street");
+      testVenues2.Save();
+
+      //Act
+      testBand.AddVenue(testVenues1);
+      List<Venue> result = testBand.GetVenues();
+      List<Venue> testList = new List<Venue> {testVenues1};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
+    [Fact]
+    public void AddVenue_AddsVenuesToBand_VenuesList()
+    {
+      //Arrange
+      Band testBand = new Band("Tom Waits", "Just the best... like... ever");
+      testBand.Save();
+
+      Venue testVenues = new Venue("The Collosseum", "89 Out West Blvd");
+      testVenues.Save();
+
+      //Act
+      testBand.AddVenue(testVenues);
+
+      List<Venue> result = testBand.GetVenues();
+      List<Venue> testList = new List<Venue>{testVenues};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
+    // [Fact]
+    // public void Delete_DeletesBandsAssociationsFromDatabase_BandsList()
+    // {
+    //   //Arrange
+    //   Venue testVenue = new Venue("In The Venue");
+    //   testVenue.Save();
+    //
+    //   Band testBands = new Band("Pinback");
+    //   testBands.Save();
+    //
+    //   //Act
+    //   testBands.AddVenue(testVenue);
+    //   testBands.Delete();
+    //
+    //   List<Band> resultVenueBands = testVenue.GetBands();
+    //   List<Band> testVenueBands = new List<Band> {};
+    //
+    //   //Assert
+    //   Assert.Equal(testVenueBands, resultVenueBands);
+    // }
+
     public void Dispose()
     {
       Band.DeleteAll();

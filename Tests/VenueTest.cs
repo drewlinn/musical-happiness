@@ -78,7 +78,73 @@ namespace BandTracker
       Assert.Equal(newAddress, result);
     }
 
+    [Fact]
+    public void GetBands_ReturnsAllVenueBand_BandList()
+    {
+     //Arrange
+     Venue testVenue = new Venue("Burt's Tiki Lounge", "1200 State St.");
+     testVenue.Save();
 
+     Band testBand1 = new Band("Townes Van Zandt", "Country/Blues");
+     testBand1.Save();
+
+     Band testBand2 = new Band("Nick Drake", "Folk/Blues");
+     testBand2.Save();
+
+     //Act
+     testVenue.AddBand(testBand1);
+     List<Band> savedBand = testVenue.GetBands();
+     List<Band> testList = new List<Band> {testBand1};
+
+     //Assert
+     Assert.Equal(testList, savedBand);
+    }
+
+    [Fact]
+    public void Test_AddBand_AddsBandToVenue()
+    {
+      //Arrange
+      Venue testVenue = new Venue("The Doug Fir", "2014 W. Burnside");
+      testVenue.Save();
+
+      Band testBand = new Band("Nick Cave and the Bad Seeds", "Art Rock");
+      testBand.Save();
+
+      Band testBand2 = new Band("Washed Out", "Chill Wave");
+      testBand2.Save();
+
+      //Act
+      testVenue.AddBand(testBand);
+      testVenue.AddBand(testBand2);
+
+      List<Band> result = testVenue.GetBands();
+      List<Band> testList = new List<Band>{testBand, testBand2};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
+
+    // [Fact]
+    // public void Delete_DeletesVenueAssociationsFromDatabase_VenueList()
+    // {
+    //   //Arrange
+    //   Band testBand = new Band("Explosions in the Sky", "Post-Rock");
+    //   testBand.Save();
+    //
+    //   Venue testVenue = new Venue("Skybar", "890 Sky Way");
+    //   testVenue.Save();
+    //
+    //   //Act
+    //   testVenue.AddBand(testBand);
+    //   testVenue.Delete();
+    //
+    //   List<Venue> resultBandVenue = testBand.GetVenues();
+    //   List<Venue> testBandVenue = new List<Venue> {};
+    //
+    //   //Assert
+    //   Assert.Equal(testBandVenue, resultBandVenue);
+    // }
 
     public void Dispose()
     {
