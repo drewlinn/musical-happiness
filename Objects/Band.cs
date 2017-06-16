@@ -34,11 +34,13 @@ namespace BandTracker
     public static List<Band> GetAll()
     {
       List<Band> AllBands = new List<Band>{};
+
       SqlConnection conn = DB.Connection();
       conn.Open();
 
       SqlCommand cmd = new SqlCommand("SELECT * FROM bands", conn);
       SqlDataReader rdr = cmd.ExecuteReader();
+
       while(rdr.Read())
       {
         int id = rdr.GetInt32(0);
@@ -78,6 +80,35 @@ namespace BandTracker
    {
      return this.GetName().GetHashCode();
    }
+
+   public void Save()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO bands (name, genre) OUTPUT INSERTED.id VALUES (@name, @genre);", conn);
+
+      SqlParameter namePara = new SqlParameter("@name", this.GetName());
+      SqlParameter genrePara = new SqlParameter("@genre", this.GetGenre());
+
+      cmd.Parameters.Add(namePara);
+      cmd.Parameters.Add(genrePara);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        this._id = rdr.GetInt32(0);
+      }
+      if(rdr != null)
+      {
+        rdr.Close();
+      }
+      if(conn != null)
+      {
+        conn.Close();
+      }
+    }
 
     public static void DeleteAll()
     {

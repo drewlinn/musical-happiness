@@ -34,6 +34,21 @@ namespace BandTracker
       Assert.Equal(Band1, Band2);
     }
 
+    [Fact]
+     public void Test_Save_SavesToDatabase()
+     {
+      //Arrange
+     Band testBand = new Band("A Tribe Called Quest", "Hip-Hop");
+
+      //Act
+      testBand.Save();
+      List<Band> result =Band.GetAll();
+      List<Band> testList = new List<Band>{testBand};
+
+      //Assert
+      Assert.Equal(testList, result);
+     }
+
     public void Dispose()
     {
       Band.DeleteAll();

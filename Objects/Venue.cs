@@ -17,6 +17,7 @@ namespace BandTracker
       _address = address;
       _id = id;
     }
+
     public int GetId()
     {
       return _id;
@@ -79,6 +80,35 @@ namespace BandTracker
    {
      return this.GetName().GetHashCode();
    }
+
+   public void Save()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO venues (name, address) OUTPUT INSERTED.id VALUES (@name, @address);", conn);
+
+      SqlParameter namePara = new SqlParameter("@name", this.GetName());
+      SqlParameter addressPara = new SqlParameter("@address", this.GetAddress());
+
+      cmd.Parameters.Add(namePara);
+      cmd.Parameters.Add(addressPara);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        this._id = rdr.GetInt32(0);
+      }
+      if(rdr != null)
+      {
+        rdr.Close();
+      }
+      if(conn != null)
+      {
+        conn.Close();
+      }
+    }
 
     public static void DeleteAll()
     {
