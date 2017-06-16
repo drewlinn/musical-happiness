@@ -8,16 +8,16 @@ namespace BandTracker
   {
     public HomeModule()
     {
-      Get["/"] = _ =>{
+      Get["/"] = _ => {
         return View["index.cshtml"];
       };
-      Get["/bands"] = _ =>{
+      Get["/bands"] = _ =>  {
         List<Band> AllBands = Band.GetAll();
         return View["bands.cshtml", AllBands];
       };
       Get["/venues"] = _ => {
         List<Venue> AllVenues = Venue.GetAll();
-        return View["venue.cshtml", AllVenues];
+        return View["venues.cshtml", AllVenues];
       };
       //CREATE
       Get["/band/new"] = _ =>  {
@@ -27,12 +27,12 @@ namespace BandTracker
       Get["/venue/new"] = _ =>  {
         return View["/venue_add.cshtml"];
       };
-      Post["/bands"]= _ =>{
+      Post["/bands"]= _ =>  {
         Band newBand = new Band(Request.Form["name"], Request.Form["genre"]);
         newBand.Save();
         return View["success.cshtml", newBand];
       };
-      Post["/venues"]= _ =>{
+      Post["/venues"]= _ => {
         Venue newVenue = new Venue(Request.Form["name"], Request.Form["address"]);
         newVenue.Save();
         return View["success.cshtml", newVenue];
