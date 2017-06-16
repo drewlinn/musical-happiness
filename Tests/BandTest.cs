@@ -49,6 +49,20 @@ namespace BandTracker
       Assert.Equal(testList, result);
      }
 
+     [Fact]
+    public void Test_Find_FindBandInDatabase()
+    {
+      //Arrange
+      Band testBand = new Band("The Doors", "Classic Rock");
+      testBand.Save();
+
+      //Act
+      Band foundBand = Band.Find(testBand.GetId());
+
+      //Assert
+      Assert.Equal(testBand, foundBand);
+    }
+
     public void Dispose()
     {
       Band.DeleteAll();
