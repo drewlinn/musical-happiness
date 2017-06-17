@@ -92,7 +92,7 @@ namespace BandTracker
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO shows (band_id, venue_id, date) OUTPUT INSERTED.id VALUES (@bandId, @venueId @date);", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO shows (band_id, venue_id, date) OUTPUT INSERTED.id VALUES (@bandId, @venueId, @date);", conn);
 
       SqlParameter bandIdPara = new SqlParameter("@bandId", this.GetBandId());
       SqlParameter venueIdPara = new SqlParameter("@venueId", this.GetVenueId());

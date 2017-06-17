@@ -34,30 +34,30 @@ namespace BandTracker
       Assert.Equal(Show1, Show2);
     }
 
-    // [Fact]
-    // public void Test_Save_SavesToDatabase()
-    // {
-    //  //Arrange
-    // Show testShow = new Show(new DateTime(2016, 04, 04));
-    //
-    //  //Act
-    //  testShow.Save();
-    //  List<Show> result = Show.GetAll();
-    //  List<Show> testList = new List<Show>{testShow};
-    //
-    //  //Assert
-    //  Assert.Equal(testList, result);
-    // }
+    [Fact]
+    public void Test_Save_SavesToDatabase()
+    {
+     //Arrange
+    Show testShow = new Show(7, 8, new DateTime(2016, 04, 04));
+
+     //Act
+     testShow.Save();
+     List<Show> result = Show.GetAll();
+     List<Show> testList = new List<Show>{testShow};
+
+     //Assert
+     Assert.Equal(testList, result);
+    }
     //
     // [Fact]
     // public void Test_Find_FindShowInDatabase()
     // {
     //   //Arrange
-    //   Show testShow = new Show(new DateTime(2016, 04, 04));
+    //   Show testShow = new Show(5, 6, new DateTime(2016, 04, 04));
     //   testShow.Save();
     //
     //   //Act
-    //   Show foundShow = Show.Find(testShow.GetId());
+    //   Show foundShow = Show.Find(16, 20, testShow.GetId());
     //
     //   //Assert
     //   Assert.Equal(testShow, foundShow);
@@ -67,11 +67,11 @@ namespace BandTracker
     // public void Test_Update_UpdatesShowInDatabase()
     // {
     //   //Arrange
-    //   Show testShow = new Show( new DateTime(2016, 04, 23));
+    //   Show testShow = new Show(25, 27, new DateTime(2016, 04, 23));
     //   testShow.Save();
     //   DateTime newDateTime = new DateTime(2016, 04, 30);
     //   //Act
-    //   testShow.Update(new DateTime(2016, 04, 30));
+    //   testShow.Update(25, 27, new DateTime(2016, 04, 30));
     //   string result = testShow.GetDateTime();
     //
     //   //Assert
