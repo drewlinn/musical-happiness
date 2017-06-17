@@ -24,15 +24,15 @@ namespace BandTracker
      Assert.Equal(0, result);
     }
 
-    // [Fact]
-    // public void Test_Override_ObjectsAreEqual()
-    // {
-    //   //Arrange, Act
-    //   Show Show1 = new Show(1, 5, new DateTime(1851, 11, 14));
-    //   Show Show2 = new Show(1, 5, new DateTime(1851, 11, 14));
-    //   //Assert
-    //   Assert.Equal(Show1, Show2);
-    // }
+    [Fact]
+    public void Test_Override_ObjectsAreEqual()
+    {
+      //Arrange, Act
+      Show Show1 = new Show(1, 5, new DateTime(1851, 11, 14));
+      Show Show2 = new Show(1, 5, new DateTime(1851, 11, 14));
+      //Assert
+      Assert.Equal(Show1, Show2);
+    }
 
     // [Fact]
     // public void Test_Save_SavesToDatabase()
