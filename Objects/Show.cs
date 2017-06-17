@@ -139,7 +139,7 @@ namespace BandTracker
         foundId = rdr.GetInt32(0);
         bandId = rdr.GetInt32(1);
         venueId = rdr.GetInt32(2);
-        date = rdr.GetDateTime(2);
+        date = rdr.GetDateTime(3);
       }
       Show foundShow = new Show(bandId, venueId, date, foundId);
       if (rdr != null)

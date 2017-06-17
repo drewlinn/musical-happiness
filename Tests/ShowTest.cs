@@ -48,21 +48,21 @@ namespace BandTracker
      //Assert
      Assert.Equal(testList, result);
     }
-    //
-    // [Fact]
-    // public void Test_Find_FindShowInDatabase()
-    // {
-    //   //Arrange
-    //   Show testShow = new Show(5, 6, new DateTime(2016, 04, 04));
-    //   testShow.Save();
-    //
-    //   //Act
-    //   Show foundShow = Show.Find(16, 20, testShow.GetId());
-    //
-    //   //Assert
-    //   Assert.Equal(testShow, foundShow);
-    // }
-    //
+
+    [Fact]
+    public void Test_Find_FindShowInDatabase()
+    {
+      //Arrange
+      Show testShow = new Show(5, 6, new DateTime(2016, 04, 04));
+      testShow.Save();
+
+      //Act
+      Show foundShow = Show.Find(testShow.GetId());
+
+      //Assert
+      Assert.Equal(testShow, foundShow);
+    }
+
     // [Fact]
     // public void Test_Update_UpdatesShowInDatabase()
     // {
