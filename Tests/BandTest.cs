@@ -145,6 +145,7 @@ namespace BandTracker
     {
       Band.DeleteAll();
       Venue.DeleteAll();
+      Show.DeleteAll();
     }
   }
 }
