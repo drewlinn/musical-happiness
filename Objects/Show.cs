@@ -158,7 +158,7 @@ namespace BandTracker
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("UPDATE shows SET bandId = @bandId WHERE id = @Id; UPDATE shows SET venueId = @venueId WHERE id = @Id; UPDATE shows SET date = @date WHERE id = @Id;", conn);
+      SqlCommand cmd = new SqlCommand("UPDATE shows SET band_id = @bandId WHERE id = @Id; UPDATE shows SET venue_id = @venueId WHERE id = @Id; UPDATE shows SET date = @date WHERE id = @Id;", conn);
 
       SqlParameter bandIdPara = new SqlParameter("@bandId", bandId);
       SqlParameter venueIdPara = new SqlParameter("@venueId", venueId);

@@ -63,20 +63,20 @@ namespace BandTracker
       Assert.Equal(testShow, foundShow);
     }
 
-    // [Fact]
-    // public void Test_Update_UpdatesShowInDatabase()
-    // {
-    //   //Arrange
-    //   Show testShow = new Show(25, 27, new DateTime(2016, 04, 23));
-    //   testShow.Save();
-    //   DateTime newDateTime = new DateTime(2016, 04, 30);
-    //   //Act
-    //   testShow.Update(25, 27, new DateTime(2016, 04, 30));
-    //   string result = testShow.GetDateTime();
-    //
-    //   //Assert
-    //   Assert.Equal(newDateTime, result);
-    // }
+    [Fact]
+    public void Test_Update_UpdatesShowInDatabase()
+    {
+      //Arrange
+      Show testShow = new Show(25, 27, new DateTime(2016, 04, 23));
+      testShow.Save();
+      DateTime newDateTime = new DateTime(2016, 04, 30);
+      //Act
+      testShow.Update(25, 27, new DateTime(2016, 04, 30));
+      DateTime result = testShow.GetDate();
+
+      //Assert
+      Assert.Equal(newDateTime, result);
+    }
 
     public void Dispose()
     {
