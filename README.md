@@ -13,17 +13,25 @@ A website created with C# and HTML where a user can create a list of Bands and t
 | Behavior | Input | Output |
 | :------- | :---- | :----- |
 | User can create Venues |
-| User can read one or more Venues |
+| User can read a Venue |
+| User can a list of Venues |
 | User can update their Venues |
 | User can delete Venues |
-| A Venue can have many Bands |
+| A Venue can have multiple Bands |
 | User can find a specific Venue |
 | User can create Bands |
-| User can read one or more Bands |
+| User can read a Band |
+| User can read a list of Bands|
 | User can update Bands |
 | User can delete Bands |
 | User can find a specific Band |
 | A Band can have multiple Venues |
+| User can create a Show, which includes one Band and one Venue |
+| User can read a Show |
+| User can read a list of Shows |
+| User can update a Show |
+| User can delete a Show |
+| User can find a specific show |
 
 ## Setup/Installation Requirements
 

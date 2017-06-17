@@ -78,6 +78,138 @@ namespace BandTracker
       Assert.Equal(newDateTime, result);
     }
 
+    // [Fact]
+    // public void GetBands_ReturnsAllVenueBand_BandList()
+    // {
+    //  //Arrange
+    //  Venue testVenue = new Venue("Burt's Tiki Lounge", "1200 State St.");
+    //  testVenue.Save();
+    //
+    //  Band testBand1 = new Band("Townes Van Zandt", "Country/Blues");
+    //  testBand1.Save();
+    //
+    //  Band testBand2 = new Band("Nick Drake", "Folk/Blues");
+    //  testBand2.Save();
+    //
+    //  //Act
+    //  testVenue.AddBand(testBand1);
+    //  List<Band> savedBand = testVenue.GetBands();
+    //  List<Band> testList = new List<Band> {testBand1};
+    //
+    //  //Assert
+    //  Assert.Equal(testList, savedBand);
+    // }
+    // [Fact]
+    // public void GetVenues_ReturnsAllBandVenues_VenueList()
+    // {
+    //   //Arrange
+    //   Band testBand = new Band("Radiohead", "Experimental Rock");
+    //   testBand.Save();
+    //
+    //   Venue testVenues1 = new Venue("The Collosseum", "456 Great Big Way");
+    //   testVenues1.Save();
+    //
+    //   Venue testVenues2 = new Venue("ThunderDome", "129 BeyondThe Street");
+    //   testVenues2.Save();
+    //
+    //   //Act
+    //   testBand.AddVenue(testVenues1);
+    //   List<Venue> result = testBand.GetVenues();
+    //   List<Venue> testList = new List<Venue> {testVenues1};
+    //
+    //   //Assert
+    //   Assert.Equal(testList, result);
+    // }
+
+    // [Fact]
+    // public void Test_AddBand_AddsBandToShow()
+    // {
+    //   //Arrange
+    //   Show testShow = new Show(1, 3, new DateTime(2017, 12, 30));
+    //   testShow.Save();
+    //
+    //   Band testBand = new Band("Nick Cave and the Bad Seeds", "Art Rock");
+    //   testBand.Save();
+    //
+    //   Band testBand2 = new Band("Washed Out", "Chill Wave");
+    //   testBand2.Save();
+    //
+    //   //Act
+    //   testShow.AddBand(testBand);
+    //   testShow.AddBand(testBand2);
+    //
+    //   List<Band> result = testShow.GetBands();
+    //   List<Band> testList = new List<Band>{testBand, testBand2};
+    //
+    //   //Assert
+    //   Assert.Equal(testList, result);
+    // }
+    // //
+    // [Fact]
+    // public void AddVenue_AddsVenuesToBand_VenuesList()
+    // {
+    //   //Arrange
+    //   Band testBand = new Band("Tom Waits", "Just the best... like... ever");
+    //   testBand.Save();
+    //
+    //   Venue testVenues = new Venue("The Collosseum", "89 Out West Blvd");
+    //   testVenues.Save();
+    //
+    //   //Act
+    //   testBand.AddVenue(testVenues);
+    //
+    //   List<Venue> result = testBand.GetVenues();
+    //   List<Venue> testList = new List<Venue>{testVenues};
+    //
+    //   //Assert
+    //   Assert.Equal(testList, result);
+    // }
+    //
+    //
+    //
+    // [Fact]
+    // public void Delete_DeletesVenueAssociationsFromDatabase_VenueList()
+    // {
+    //   //Arrange
+    //   Band testBand = new Band("Explosions in the Sky", "Post-Rock");
+    //   testBand.Save();
+    //
+    //   Venue testVenue = new Venue("Skybar", "890 Sky Way");
+    //   testVenue.Save();
+    //
+    //   //Act
+    //   testVenue.AddBand(testBand);
+    //   testVenue.Delete();
+    //
+    //   List<Venue> resultBandVenue = testBand.GetVenues();
+    //   List<Venue> testBandVenue = new List<Venue> {};
+    //
+    //   //Assert
+    //   Assert.Equal(testBandVenue, resultBandVenue);
+    // }
+    //
+    // [Fact]
+    // public void Delete_DeletesBandsAssociationsFromDatabase_BandsList()
+    // {
+    //   //Arrange
+    //   Venue testVenue = new Venue("In The Venue", "39 Grand Central Way");
+    //   testVenue.Save();
+    //
+    //   Band testBands = new Band("Pinback", "Indie Rock");
+    //   testBands.Save();
+    //
+    //   //Act
+    //   testBands.AddVenue(testVenue);
+    //   testBands.Delete();
+    //
+    //   List<Band> resultVenueBands = testVenue.GetBands();
+    //   List<Band> testVenueBands = new List<Band> {};
+    //
+    //   //Assert
+    //   Assert.Equal(testVenueBands, resultVenueBands);
+    // }
+
+
     public void Dispose()
     {
       Band.DeleteAll();

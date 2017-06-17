@@ -1,0 +1,22 @@
+<h1>Add a new show</h1>
+<form action="/shows" method="post">
+  <label for="band">Band</label>
+  <select name="band">
+    @foreach(var band in Model)
+    {
+      <option value="@Model["band"].GetId()">@Model.["band"].GetName()</option>
+    }
+  </select>
+  <label for="venue">Venue</label>
+  <select name="venue">
+    @foreach(var venue in Model)
+    {
+      <option value="@Model.["venue"].GetId()">@Model.["venue"].GetName()</option>
+    }
+  </select>
+  <label for="date">Date and Time</label>
+  <input id="date" name="date" type="DateTime">
+  <button type="submit">Submit</button>
+</form>
+<a href="/">Go Back</a>
+<a href="/shows">View all shows</a>

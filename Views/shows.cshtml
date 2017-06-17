@@ -1,0 +1,13 @@
+<h1>All Shows</h1>
+@if(@Model.Count == 0)
+{
+  <h3>You have not added any Shows</h3>
+}
+@foreach(var show in Model)
+{
+  <ul>
+    <li><a href="/show/@show.GetId()">@show.GetDate()</a> | <a href="/show/edit/@show.GetId()">Edit</a> | <a href="/show/delete/@show.GetId()">Delete</a></li>
+  </ul>
+}
+<p><a href="/show/new">Add a new Show</a></p>
+<p><a href="/">Return Home</a></p>

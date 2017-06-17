@@ -1,0 +1,28 @@
+<h1>Edit Show</h1>
+<hr />
+<h2>Edit Show: </h2>
+  <h3>@Model.["band"].GetName()</h3>
+  <h3>@Model.["venue"].GetName()</h3>
+  <h3>@Model.["show"].GetDate()</h3>
+<form action="/show/edit/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input name="show-id" type="hidden" value="@Model.GetId()">
+  <label for="name">Band Name</label>
+  <select name="band">
+    @foreach(var band in Model)
+    {
+      <option value="@band.GetId()">@band.GetName()</option>
+    }
+  </select>
+  <label for="venue">Venue</label>
+  <select name="venue">
+    @foreach(var venue in Model)
+    {
+      <option value="@venue.GetId()">@venue.GetName()</option>
+    }
+  </select>
+  <label for="date">Date and Time</label>
+  <input id="date" name="date" type="DateTime">
+  <button type="submit">Submit</button>
+</form>
+<h4><a href="/">Return home</a></h4>
