@@ -2,20 +2,20 @@
 <form action="/shows" method="post">
   <label for="band">Band</label>
   <select name="band">
-    @foreach(var band in Model)
+    @foreach(var band in @Model["band"])
     {
-      <option value="@Model["band"].GetId()">@Model.["band"].GetName()</option>
+      <option value="@band.GetId()">@band.GetName()</option>
     }
   </select>
   <label for="venue">Venue</label>
   <select name="venue">
-    @foreach(var venue in Model)
+    @foreach(var venue in @Model["venue"])
     {
-      <option value="@Model.["venue"].GetId()">@Model.["venue"].GetName()</option>
+      <option value="@venue.GetId()">@venue.GetName()</option>
     }
   </select>
   <label for="date">Date and Time</label>
-  <input id="date" name="date" type="DateTime">
+  <input id="date" name="date" type="datetime-local">
   <button type="submit">Submit</button>
 </form>
 <a href="/">Go Back</a>
