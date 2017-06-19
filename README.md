@@ -66,7 +66,10 @@ CREATE TABLE shows(id INT IDENTITY(1,1), band_id INT, venue_id INT, date DATETIM
 GO
 
 ## Known Bugs
-*
+* List of shows and individual show pages do not include artist or venue names yet. Need to finish testing and writing GetBand and GetVenue methods for our Show Object to make this possible.
+
+The lack of a venues_bands table is not an oversight. Shows IS our join table.
+
 
 ## Technologies Used
 * C#
