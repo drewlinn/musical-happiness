@@ -1,7 +1,11 @@
-<h3>This is @Model["band"].GetName()</h3>
+<h2>This is @Model["band"].GetName()</h2>
 <h3>Genre: @Model["band"].GetGenre()</h3>
-<h3>Venues: @Model["venue"].GetName()</h3>
 
+<h3>Venues:</h3>   @foreach (var venue in @Model["venues"])
+  {
+    <li><a href="/venue/@venue.GetId()">@venue.GetName()</li>
+  }
+<p><a href="/show/new">Add a new Show</a></p>
 <p><a href="/bands">View all bands</a></p>
 <p><a href="/band/new">Add a another band</a></p>
 <p><a href="/">Return Home</a></p>

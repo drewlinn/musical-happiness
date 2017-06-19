@@ -12,26 +12,26 @@ A website created with C# and HTML where a user can create a list of Bands and t
 ### Specifications
 | Behavior | Input | Output |
 | :------- | :---- | :----- |
-| User can create Venues |
-| User can read a Venue |
-| User can a list of Venues |
-| User can update their Venues |
-| User can delete Venues |
-| A Venue can have multiple Bands |
-| User can find a specific Venue |
-| User can create Bands |
-| User can read a Band |
-| User can read a list of Bands|
-| User can update Bands |
-| User can delete Bands |
-| User can find a specific Band |
-| A Band can have multiple Venues |
-| User can create a Show, which includes one Band and one Venue |
-| User can read a Show |
-| User can read a list of Shows |
-| User can update a Show |
-| User can delete a Show |
-| User can find a specific show |
+| User can create Venues | "The Colosseum" | "Success!" |
+| User can read a Venue | "Click Hyperlink" | "The Colosseum" |
+| User can view a list of Venues | "View All" | "The Colosseum", "In the Venue", "Dave's Bar" |
+| User can update their Venues | "Edit the Colosseum" | "Success!" |
+| User can delete Venues | "Delete this venue" | "Success!"
+| A Venue can have multiple Bands | "Tom Waits", "Leonard Cohen", "Nick Drake"
+| User can find a specific Venue | "The Colosseum" | Displays the Colosseum and it's artists. |
+| User can create Bands | "Tom Waits" | "Success!" |
+| User can read a Band | "Click Hyperlink" | "Tom Waits" |
+| User can read a list of Bands| "View All" | "The Doors", "Pixies", "Radiohead" |
+| User can update Bands | "Edit The Doors" | "Success!"
+| User can delete Bands | "Delete this band" | "Success!" |
+| User can find a specific Band | "Tom Waits" | Displays the artist and their venues. |
+| A Band can have multiple Venues | "Pixies" | "In the Venue", "The Colosseum", "Dave's Bar" |
+| User can create a Show, which includes one Band and one Venue | "Radiohead", "The Colosseum" |
+| User can read a Show | "Radiohead", "The Colosseum", 2018/9/12 |
+| User can read a list of Shows | "View All Shows" | Radiohead, Tom Waits, Animal Collective |
+| User can update a Show | "Edit 11/12/18" | "11/14/18" |
+| User can delete a Show | "Delete this show" | "Success!"
+| User can find a specific show | "Radiohead" | "03/23/19", "The Colosseum" |
 
 ## Setup/Installation Requirements
 
@@ -46,6 +46,24 @@ A website created with C# and HTML where a user can create a list of Bands and t
 9. Verify that the database has been created and the schema and/or data imported.
 10. Open the command line (try using the Windows Powershell [https://msdn.microsoft.com/en-us/powershell/mt173057.aspx]) and navigate into the repository. Use the command "dnx kestrel" to start the server.
 11. On your browser, navigate to "localhost:5004" and enjoy!
+
+##Database and Tables
+
+CREATE DATABASE band_tracker;
+GO
+
+USE band_tracker;
+GO
+
+
+CREATE TABLE bands(id INT IDENTITY(1,1), name VARCHAR(255), genre VARCHAR(255));
+GO
+
+CREATE TABLE venues(id INT IDENTITY(1,1), name VARCHAR(255), address VARCHAR(255));
+GO
+
+CREATE TABLE shows(id INT IDENTITY(1,1), band_id INT, venue_id INT, date DATETIME));
+GO
 
 ## Known Bugs
 *

@@ -78,28 +78,49 @@ namespace BandTracker
       //Assert
       Assert.Equal(newDateTime, result);
     }
-
+// //////////////////////////////////////////////////////////////////////////
     // [Fact]
-    // public void GetBands_ReturnsAllVenueBand_BandList()
+    // public void GetBand_Returns_BandList()
     // {
     //  //Arrange
-    //  Venue testVenue = new Venue("Burt's Tiki Lounge", "1200 State St.");
-    //  testVenue.Save();
+    //  Show testShow = new Show(9, 3, new DateTime(2017, 04,29));
+    //  testShow.Save();
     //
-    //  Band testBand1 = new Band("Townes Van Zandt", "Country/Blues");
-    //  testBand1.Save();
-    //
-    //  Band testBand2 = new Band("Nick Drake", "Folk/Blues");
-    //  testBand2.Save();
+    //  Band testBand = new Band("Townes Van Zandt", "Country/Blues");
+    //  testBand.Save();
     //
     //  //Act
-    //  testVenue.AddBand(testBand1);
-    //  List<Band> savedBand = testVenue.GetBands();
-    //  List<Band> testList = new List<Band> {testBand1};
+    //  List<Band> savedBand = testShow.GetBand();
+    //  List<Band> testList = new List<Band> {testBand};
     //
     //  //Assert
     //  Assert.Equal(testList, savedBand);
     // }
+
+    // [Fact]
+    // public void Test_AddBand_AddsBandToShow()
+    // {
+    //   //Arrange
+    //   Show testShow = new Show(0, 3, new DateTime(2017, 12, 30));
+    //   testShow.Save();
+    //
+    //   Band testBand = new Band("Nick Cave and the Bad Seeds", "Art Rock");
+    //   testBand.Save();
+    //
+    //   // Band testBand2 = new Band("Washed Out", "Chill Wave");
+    //   // testBand2.Save();
+    //
+    //   //Act
+    //   testShow.AddBand(testBand);
+    //   // testShow.AddBand(testBand2);
+    //
+    //   List<Band> result = testShow.GetBand();
+    //   List<Band> testList = new List<Band>{testBand};
+    //
+    //   //Assert
+    //   Assert.Equal(testList, result);
+    // }
+
     // [Fact]
     // public void GetVenues_ReturnsAllBandVenues_VenueList()
     // {
@@ -122,29 +143,6 @@ namespace BandTracker
     //   Assert.Equal(testList, result);
     // }
 
-    // [Fact]
-    // public void Test_AddBand_AddsBandToShow()
-    // {
-    //   //Arrange
-    //   Show testShow = new Show(1, 3, new DateTime(2017, 12, 30));
-    //   testShow.Save();
-    //
-    //   Band testBand = new Band("Nick Cave and the Bad Seeds", "Art Rock");
-    //   testBand.Save();
-    //
-    //   Band testBand2 = new Band("Washed Out", "Chill Wave");
-    //   testBand2.Save();
-    //
-    //   //Act
-    //   testShow.AddBand(testBand);
-    //   testShow.AddBand(testBand2);
-    //
-    //   List<Band> result = testShow.GetBands();
-    //   List<Band> testList = new List<Band>{testBand, testBand2};
-    //
-    //   //Assert
-    //   Assert.Equal(testList, result);
-    // }
     // //
     // [Fact]
     // public void AddVenue_AddsVenuesToBand_VenuesList()
@@ -209,7 +207,7 @@ namespace BandTracker
     //   //Assert
     //   Assert.Equal(testVenueBands, resultVenueBands);
     // }
-
+// //////////////////////////////////////////////////////////////////////////
 
     public void Dispose()
     {

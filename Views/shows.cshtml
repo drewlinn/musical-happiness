@@ -3,7 +3,7 @@
 {
   <h3>You have not added any Shows</h3>
 }
-@foreach(var show in Model)
+@foreach(var show in @Model["shows"])
 {
   <ul>
     <li><a href="/show/@show.GetId()">@show.GetDate()</a> | <a href="/show/edit/@show.GetId()">Edit</a> | <a href="/show/delete/@show.GetId()">Delete</a></li>
