@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Nancy;
 using Nancy.ViewEngines.Razor;
+using BandTracker.Objects;
 
 namespace BandTracker
 {
@@ -100,12 +101,16 @@ namespace BandTracker
       };
       Get["/show/edit/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
+        Band SelectedBand = Band.Find(parameters.id);
+        Venue SelectedVenue = Venue.Find(parameters.id);
         Show SelectedShow = Show.Find(parameters.id);
         List<Band> AllBands = Band.GetAll();
         List<Venue> AllVenues = Venue.GetAll();
+        model.Add("band", SelectedBand);
+        model.Add("venue", SelectedVenue);
         model.Add("show", SelectedShow);
-        model.Add("venue", AllVenues);
-        model.Add("band", AllBands);
+        model.Add("venues", AllVenues);
+        model.Add("bands", AllBands);
         return View["show_edit.cshtml", model];
       };
       Patch["/show/edit/{id}"] = parameters =>{
