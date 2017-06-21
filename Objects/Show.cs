@@ -240,7 +240,7 @@ namespace BandTracker.Objects
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      List<Venue> venues = new List<Venue>{};
+      List<Venue> venue = new List<Venue>{};
 
       while(rdr.Read())
       {
@@ -248,7 +248,7 @@ namespace BandTracker.Objects
         string name = rdr.GetString(1);
         string address = rdr.GetString(2);
         Venue newVenue = new Venue(name, address, venueId);
-        venues.Add(newVenue);
+        venue.Add(newVenue);
       }
       if (rdr != null)
       {
@@ -258,7 +258,7 @@ namespace BandTracker.Objects
       {
         conn.Close();
       }
-      return venues;
+      return venue;
     }
 
     //Add band's id and venue's id to shows table

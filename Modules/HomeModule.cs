@@ -21,19 +21,13 @@ namespace BandTracker
         return View["venues.cshtml", AllVenues];
       };
       Get["/shows"] = _ => {
-        Dictionary<string, object> model = new Dictionary<string, object>();
-        List<Band> AllBands = Band.GetAll();
-        List<Venue> AllVenues = Venue.GetAll();
         List<Show> AllShows = Show.GetAll();
-        model.Add("bands", AllBands);
-        model.Add("venues", AllVenues);
-        model.Add("shows", AllShows);
-        return View["shows.cshtml", model];
+        return View["shows.cshtml", AllShows];
       };
       //CREATE
       Get["/band/new"] = _ =>  {
-        List<Venue> AllVenue = Venue.GetAll();
-        return View["/band_add.cshtml", AllVenue];
+        List<Venue> AllVenues = Venue.GetAll();
+        return View["/band_add.cshtml", AllVenues];
       };
       Get["/venue/new"] = _ =>  {
         return View["/venue_add.cshtml"];
@@ -80,9 +74,9 @@ namespace BandTracker
       };
       Get["/show/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        var selectedBand = Band.Find(parameters.id);
-        var selectedVenue = Venue.Find(parameters.id);
         var selectedShow = Show.Find(parameters.id);
+        var selectedBand = selectedShow.GetBand();
+        var selectedVenue = selectedShow.GetVenue();
         model.Add("band", selectedBand);
         model.Add("venue", selectedVenue);
         model.Add("show", selectedShow);

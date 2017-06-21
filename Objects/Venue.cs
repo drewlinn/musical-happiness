@@ -22,7 +22,7 @@ namespace BandTracker.Objects
     {
       return _id;
     }
-    public string GetName()
+    public string GetVenueName()
     {
       return _name;
     }
@@ -70,7 +70,7 @@ namespace BandTracker.Objects
      {
       Venue newVenue = (Venue) otherVenue;
       bool idEquality = (this.GetId() == newVenue.GetId());
-      bool nameEquality = (this.GetName() == newVenue.GetName());
+      bool nameEquality = (this.GetVenueName() == newVenue.GetVenueName());
       bool addressEquality = (this.GetAddress() == newVenue.GetAddress());
       return (idEquality && nameEquality);
      }
@@ -78,7 +78,7 @@ namespace BandTracker.Objects
 
    public override int GetHashCode()
    {
-     return this.GetName().GetHashCode();
+     return this.GetVenueName().GetHashCode();
    }
 
    public void Save()
@@ -88,7 +88,7 @@ namespace BandTracker.Objects
 
       SqlCommand cmd = new SqlCommand("INSERT INTO venues (name, address) OUTPUT INSERTED.id VALUES (@name, @address);", conn);
 
-      SqlParameter namePara = new SqlParameter("@name", this.GetName());
+      SqlParameter namePara = new SqlParameter("@name", this.GetVenueName());
       SqlParameter addressPara = new SqlParameter("@address", this.GetAddress());
 
       cmd.Parameters.Add(namePara);

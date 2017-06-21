@@ -6,7 +6,7 @@
 @foreach(var band in Model)
 {
   <ul>
-    <li><a href="/band/@band.GetId()">@band.GetName()</a> | <a href="/band/edit/@band.GetId()">Edit</a> | <a href="/band/delete/@band.GetId()">Delete</a></li>
+    <li><a href="/band/@band.GetId()">@band.GetBandName()</a> | <a href="/band/edit/@band.GetId()">Edit</a> | <a href="/band/delete/@band.GetId()">Delete</a></li>
   </ul>
 }
 <p><a href="/band/new">Add a new Band</a></p>

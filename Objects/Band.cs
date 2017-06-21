@@ -22,7 +22,7 @@ namespace BandTracker.Objects
     {
       return _id;
     }
-    public string GetName()
+    public string GetBandName()
     {
       return _name;
     }
@@ -70,7 +70,7 @@ namespace BandTracker.Objects
     {
       Band newBand = (Band) otherBand;
       bool idEquality = (this.GetId() == newBand.GetId());
-      bool nameEquality = (this.GetName() == newBand.GetName());
+      bool nameEquality = (this.GetBandName() == newBand.GetBandName());
       bool genreEquality = (this.GetGenre() == newBand.GetGenre());
       return (idEquality && nameEquality && genreEquality);
       }
@@ -78,7 +78,7 @@ namespace BandTracker.Objects
 
    public override int GetHashCode()
    {
-     return this.GetName().GetHashCode();
+     return this.GetBandName().GetHashCode();
    }
 
    public void Save()
@@ -88,7 +88,7 @@ namespace BandTracker.Objects
 
       SqlCommand cmd = new SqlCommand("INSERT INTO bands (name, genre) OUTPUT INSERTED.id VALUES (@name, @genre);", conn);
 
-      SqlParameter namePara = new SqlParameter("@name", this.GetName());
+      SqlParameter namePara = new SqlParameter("@name", this.GetBandName());
       SqlParameter genrePara = new SqlParameter("@genre", this.GetGenre());
 
       cmd.Parameters.Add(namePara);

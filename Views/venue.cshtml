@@ -1,4 +1,4 @@
-<h2>@Model["venue"].GetName(). </h2>
+<h2>@Model["venue"].GetVenueName(). </h2>
 <h4>Address: @Model["venue"].GetAddress()</h4>
 @if(@Model["bands"].Count == 0)
 {
@@ -9,7 +9,7 @@ else
   <ol>
     @foreach (var band in @Model["bands"])
     {
-      <li><a href="/band/@band.GetId()">@band.GetName()</li>
+      <li><a href="/band/@band.GetId()">@band.GetBandName()</li>
     }
   </ol>
 }
