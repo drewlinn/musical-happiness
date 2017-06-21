@@ -21,8 +21,20 @@ namespace BandTracker
         return View["venues.cshtml", AllVenues];
       };
       Get["/shows"] = _ => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
         List<Show> AllShows = Show.GetAll();
-        return View["shows.cshtml", AllShows];
+        List<Venue> AllVenues = Venue.GetAll();
+        List<Band> AllBands = Band.GetAll();
+        model.Add("shows", AllShows;
+        model.Add("venues", AllVenues;
+        model.Add("bands", AllBands;
+        // Band band = new Band();
+        // Venue venue = new Venue();
+        // var showBand = show.GetBand();
+        // var showVenue = show.GetVenue();
+        // band = showBand;
+        // venue = showVenue;
+        return View["shows.cshtml", model];
       };
       //CREATE
       Get["/band/new"] = _ =>  {
