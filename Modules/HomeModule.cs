@@ -71,7 +71,7 @@ namespace BandTracker
       Get["/band/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
         var selectedBand = Band.Find(parameters.id);
-        var bandVenues = selectedBand.GetVenue();
+        var bandVenues = selectedBand.GetVenues();
         model.Add("venues", bandVenues);
         model.Add("band", selectedBand);
         return View["band.cshtml", model];
@@ -79,7 +79,7 @@ namespace BandTracker
       Get["/venue/{id}"]= parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
         var selectedVenue = Venue.Find(parameters.id);
-        var BandsVenue = selectedVenue.GetBand();
+        var BandsVenue = selectedVenue.GetBands();
         model.Add("venue", selectedVenue);
         model.Add("bands", BandsVenue);
         return View["venue.cshtml", model];

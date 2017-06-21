@@ -5,9 +5,9 @@
   <input type="hidden" name="_method" value="PATCH">
   <input name="band-id" type="hidden" value="@Model.GetId()">
   <label for="name">Band Name</label>
-  <input id="name" name="name" type="text">
+  <input id="name" name="name" type="text" value="@Model.GetBandName()">
   <label for="genre">Genre</label>
-  <input id="genre" name="genre" type="text">
+  <input id="genre" name="genre" type="text" value="@Model.GetGenre()">
   <button type="submit">Submit</button>
 </form>
 <h4><a href="/">Return home</a></h4>

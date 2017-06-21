@@ -5,9 +5,9 @@
   <input type="hidden" name="_method" value="PATCH">
   <input name="venue-id" type="hidden" value="@Model.GetId()">
   <label for="name">Name</label>
-  <input id="name" name="name" type="text">
+  <input id="name" name="name" type="text" value="@Model.GetVenueName()">
   <label for="address">Address</label>
-  <input id="address" name="address" type="text">
+  <input id="address" name="address" type="text" value="@Model.GetAddress()">
   <button type="submit">Submit</button>
 </form>
 <h4><a href="/">Return home</a></h4>
