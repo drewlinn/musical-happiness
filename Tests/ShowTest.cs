@@ -78,7 +78,7 @@ namespace BandTracker
       //Assert
       Assert.Equal(newDateTime, result);
     }
-// //////////////////////////////////////////////////////////////////////////
+
     [Fact]
     public void GetBand_Returns_BandList()
     {
@@ -106,13 +106,8 @@ namespace BandTracker
       Show testShow = new Show(testBand.GetId(), 3, new DateTime(2017, 12, 30));
       testShow.Save();
 
-
-      // Band testBand2 = new Band("Washed Out", "Chill Wave");
-      // testBand2.Save();
-
       //Act
       testShow.AddBand(testBand);
-      // testShow.AddBand(testBand2);
 
       List<Band> result = testShow.GetBand();
       List<Band> testList = new List<Band>{testBand};
@@ -139,7 +134,6 @@ namespace BandTracker
       Assert.Equal(testList, result);
     }
 
-    // //
     [Fact]
     public void AddVenue_AddsVenuesToBand_VenuesList()
     {
@@ -159,50 +153,44 @@ namespace BandTracker
       Assert.Equal(testList, result);
     }
 
+    [Fact]
+    public void Delete_DeletesVenueAssociationsFromDatabase_VenueList()
+    {
+      //Arrange
+      Venue testVenue = new Venue("Skybar", "890 Sky Way");
+      testVenue.Save();
+      Show testShow = new Show(25, testVenue.GetId(), new DateTime(2016, 04, 30));
+      testShow.Save();
+
+      //Act
+      testVenue.Delete();
+
+      List<Venue> resultShowVenue = testShow.GetVenue();
+      List<Venue> testShowVenue = new List<Venue> {};
+
+      //Assert
+      Assert.Equal(testShowVenue, resultShowVenue);
+    }
+
+    [Fact]
+    public void Delete_DeletesBandsAssociationsFromDatabase_BandsList()
+    {
+      //Arrange
+      Band testBand = new Band("Pinback", "Indie Rock");
+      testBand.Save();
+      Show testShow = new Show(testBand.GetId(), 27, new DateTime(2016, 04, 30));
+      testShow.Save();
 
 
-    // [Fact]
-    // public void Delete_DeletesVenueAssociationsFromDatabase_VenueList()
-    // {
-    //   //Arrange
-    //   Band testBand = new Band("Explosions in the Sky", "Post-Rock");
-    //   testBand.Save();
-    //
-    //   Venue testVenue = new Venue("Skybar", "890 Sky Way");
-    //   testVenue.Save();
-    //
-    //   //Act
-    //   testVenue.AddBand(testBand);
-    //   testVenue.Delete();
-    //
-    //   List<Venue> resultBandVenue = testBand.GetVenues();
-    //   List<Venue> testBandVenue = new List<Venue> {};
-    //
-    //   //Assert
-    //   Assert.Equal(testBandVenue, resultBandVenue);
-    // }
-    //
-    // [Fact]
-    // public void Delete_DeletesBandsAssociationsFromDatabase_BandsList()
-    // {
-    //   //Arrange
-    //   Venue testVenue = new Venue("In The Venue", "39 Grand Central Way");
-    //   testVenue.Save();
-    //
-    //   Band testBands = new Band("Pinback", "Indie Rock");
-    //   testBands.Save();
-    //
-    //   //Act
-    //   testBands.AddVenue(testVenue);
-    //   testBands.Delete();
-    //
-    //   List<Band> resultVenueBands = testVenue.GetBands();
-    //   List<Band> testVenueBands = new List<Band> {};
-    //
-    //   //Assert
-    //   Assert.Equal(testVenueBands, resultVenueBands);
-    // }
-// //////////////////////////////////////////////////////////////////////////
+      //Act
+      testBand.Delete();
+
+      List<Band> resultShowBand = testShow.GetBand();
+      List<Band> testShowBand = new List<Band> {};
+
+      //Assert
+      Assert.Equal(testShowBand, resultShowBand);
+    }
 
     public void Dispose()
     {
