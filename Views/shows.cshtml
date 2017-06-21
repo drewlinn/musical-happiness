@@ -6,7 +6,7 @@
 @foreach(var show in @Model["shows"])
 {
   <ul>
-    <li><a href="/show/@show.GetId()">@show.GetDate()</a> | @show.GetBandId() | @show.GetVenueId() <a href="/show/edit/@show.GetId()">Edit</a> | <a href="/show/delete/@show.GetId()">Delete</a></li>
+    <li><a href="/show/@show.GetId()">@show.GetDate()</a> | <a href="/band/@show.GetBandId()">@show.GetBand().GetBandName()</a> | <a href="/venue/@show.GetVenueId()">@show.GetVenue().GetVenueName()</a> <a href="/show/edit/@show.GetId()">Edit</a> | <a href="/show/delete/@show.GetId()">Delete</a></li>
   </ul>
 }
 <p><a href="/show/new">Add a new Show</a></p>

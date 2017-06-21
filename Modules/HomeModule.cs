@@ -86,9 +86,9 @@ namespace BandTracker
       };
       Get["/show/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>();
-        var selectedShow = Show.Find(parameters.id);
-        var selectedBand = selectedShow.GetBand();
-        var selectedVenue = selectedShow.GetVenue();
+        Show selectedShow = Show.Find(parameters.id);
+        Band selectedBand = selectedShow.GetBand();
+        Venue selectedVenue = selectedShow.GetVenue();
         model.Add("band", selectedBand);
         model.Add("venue", selectedVenue);
         model.Add("show", selectedShow);
@@ -113,20 +113,20 @@ namespace BandTracker
         SelectedBand.Update(Request.Form["name"], Request.Form["genre"]);
         return View["success.cshtml"];
       };
-      // Get["/show/edit/{id}"] = parameters => {
-      //   Dictionary<string, object> model = new Dictionary<string, object>();
-      //   Show SelectedShow = Show.Find(parameters.id);
-      //   Band SelectedBand = SelectedShow.GetBand();
-      //   Venue SelectedVenue = SelectedShow.GetVenue().GetVenueName();
-      //   // List<Band> AllBands = Band.GetAll();
-      //   // List<Venue> AllVenues = Venue.GetAll();
-      //   model.Add("band", SelectedBand);
-      //   model.Add("venue", SelectedVenue);
-      //   model.Add("show", SelectedShow);
-      //   // model.Add("venues", AllVenues);
-      //   // model.Add("bands", AllBands);
-      //   return View["show_edit.cshtml", model];
-      // };
+      Get["/show/edit/{id}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Show SelectedShow = Show.Find(parameters.id);
+        Band SelectedBand = SelectedShow.GetBand();
+        Venue SelectedVenue = SelectedShow.GetVenue();
+        List<Band> AllBands = Band.GetAll();
+        List<Venue> AllVenues = Venue.GetAll();
+        model.Add("band", SelectedBand);
+        model.Add("venue", SelectedVenue);
+        model.Add("show", SelectedShow);
+        model.Add("venues", AllVenues);
+        model.Add("bands", AllBands);
+        return View["show_edit.cshtml", model];
+      };
       Patch["/show/edit/{id}"] = parameters =>{
         Show SelectedShow = Show.Find(parameters.id);
         SelectedShow.Update(Request.Form["band"], Request.Form["venue"], Request.Form["date"]);
