@@ -183,7 +183,7 @@ namespace BandTracker.Objects
       conn.Open();
 
       SqlCommand cmd = new SqlCommand("SELECT * FROM bands WHERE id = @bandId;", conn);
-      SqlParameter bandIdParam = new SqlParameter("@bandId", this.GetBandId().ToString());
+      SqlParameter bandIdParam = new SqlParameter("@bandId", this.GetBandId());
 
       cmd.Parameters.Add(bandIdParam);
 
@@ -198,7 +198,6 @@ namespace BandTracker.Objects
         string genre = rdr.GetString(2);
         Band newBand = new Band(name, genre, bandId);
         band.Add(newBand);
-        Console.WriteLine(newBand);
       }
       if (rdr != null)
       {
@@ -211,77 +210,74 @@ namespace BandTracker.Objects
       return band;
     }
 
-    // //Add band's id and venue's id to shows table
-    // public void AddBand(Band newBand)
-    // {
-    //   SqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("INSERT INTO shows (band_id) VALUES (@bandId);", conn);
-    //
-    //   SqlParameter bandIdParameter = new SqlParameter( "@bandId", newBand.GetId());
-    //
-    //   cmd.Parameters.Add(bandIdParameter);
-    //   cmd.ExecuteNonQuery();
-    //   if (conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    // }
+    //Add band's id and venue's id to shows table
+    public void AddBand(Band newBand)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
 
-    // public List<Venue> GetVenue()
-    // {
-    //   SqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("SELECT * FROM venues WHERE id = @venueId;", conn);
-    //   SqlParameter venueIdParam = new SqlParameter("@venueId", this.GetId().ToString());
-    //
-    //   cmd.Parameters.Add(venueIdParam);
-    //
-    //   SqlDataReader rdr = cmd.ExecuteReader();
-    //
-    //   List<Venue> venues = new List<Venue>{};
-    //
-    //   while(rdr.Read())
-    //   {
-    //     int venueId = rdr.GetInt32(0);
-    //     string name = rdr.GetString(1);
-    //     string address = rdr.GetString(2);
-    //     Venue newVenue = new Venue(name, address, venueId);
-    //     venues.Add(newVenue);
-    //   }
-    //
-    //   if (rdr != null)
-    //   {
-    //     rdr.Close();
-    //   }
-    //   if (conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    //   return venues;
-    // }
-    //
-    // //Add band's id and venue's id to shows table
-    // public void AddVenue(Venue newVenue)
-    // {
-    //   SqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("INSERT INTO shows (band_id, venue_id) VALUES (@BandId, @VenueId);", conn);
-    //
-    //   SqlParameter bandIdParameter = new SqlParameter("@BandId", this.GetId());
-    //   SqlParameter venueIdParameter = new SqlParameter( "@VenueId", newVenue.GetId());
-    //
-    //   cmd.Parameters.Add(bandIdParameter);
-    //   cmd.Parameters.Add(venueIdParameter);
-    //   cmd.ExecuteNonQuery();
-    //   if (conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    // }
+      SqlCommand cmd = new SqlCommand("UPDATE shows SET band_id = @bandId WHERE band_id = @bandId;", conn);
+
+      SqlParameter bandIdParameter = new SqlParameter("@bandId", newBand.GetId());
+
+      cmd.Parameters.Add(bandIdParameter);
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
+    public List<Venue> GetVenue()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM venues WHERE id = @venueId;", conn);
+      SqlParameter venueIdParam = new SqlParameter("@venueId", this.GetVenueId().ToString());
+
+      cmd.Parameters.Add(venueIdParam);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      List<Venue> venues = new List<Venue>{};
+
+      while(rdr.Read())
+      {
+        int venueId = rdr.GetInt32(0);
+        string name = rdr.GetString(1);
+        string address = rdr.GetString(2);
+        Venue newVenue = new Venue(name, address, venueId);
+        venues.Add(newVenue);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return venues;
+    }
+
+    //Add band's id and venue's id to shows table
+    public void AddVenue(Venue newVenue)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("UPDATE shows SET venue_id = @venueId WHERE venue_id = @venueId;", conn);
+
+      SqlParameter venueIdParameter = new SqlParameter( "@VenueId", newVenue.GetId());
+
+      cmd.Parameters.Add(venueIdParameter);
+      cmd.ExecuteNonQuery();
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
 
     public void Delete()
     {

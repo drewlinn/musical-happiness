@@ -79,93 +79,88 @@ namespace BandTracker
       Assert.Equal(newDateTime, result);
     }
 // //////////////////////////////////////////////////////////////////////////
-    // [Fact]
-    // public void GetBand_Returns_BandList()
-    // {
-    //  //Arrange
-    //  Show testShow = new Show(9, 3, new DateTime(2017, 04,29));
-    //  testShow.Save();
-    //
-    //  Band testBand = new Band("Townes Van Zandt", "Country/Blues");
-    //  testBand.Save();
-    //
-    //  //Act
-    //  List<Band> savedBand = testShow.GetBand();
-    //  List<Band> testList = new List<Band> {testBand};
-    //
-    //  //Assert
-    //  Assert.Equal(testList, savedBand);
-    // }
+    [Fact]
+    public void GetBand_Returns_BandList()
+    {
+     //Arrange
+     Band testBand = new Band("Townes Van Zandt", "Country/Blues");
+     testBand.Save();
+     Show testShow = new Show(testBand.GetId(), 3, new DateTime(2017, 04, 29));
+     testShow.Save();
 
-    // [Fact]
-    // public void Test_AddBand_AddsBandToShow()
-    // {
-    //   //Arrange
-    //   Show testShow = new Show(0, 3, new DateTime(2017, 12, 30));
-    //   testShow.Save();
-    //
-    //   Band testBand = new Band("Nick Cave and the Bad Seeds", "Art Rock");
-    //   testBand.Save();
-    //
-    //   // Band testBand2 = new Band("Washed Out", "Chill Wave");
-    //   // testBand2.Save();
-    //
-    //   //Act
-    //   testShow.AddBand(testBand);
-    //   // testShow.AddBand(testBand2);
-    //
-    //   List<Band> result = testShow.GetBand();
-    //   List<Band> testList = new List<Band>{testBand};
-    //
-    //   //Assert
-    //   Assert.Equal(testList, result);
-    // }
+     //Act
+     testShow.AddBand(testBand);
+     List<Band> savedBand = testShow.GetBand();
+     List<Band> testList = new List<Band> {testBand};
 
-    // [Fact]
-    // public void GetVenues_ReturnsAllBandVenues_VenueList()
-    // {
-    //   //Arrange
-    //   Band testBand = new Band("Radiohead", "Experimental Rock");
-    //   testBand.Save();
-    //
-    //   Venue testVenues1 = new Venue("The Collosseum", "456 Great Big Way");
-    //   testVenues1.Save();
-    //
-    //   Venue testVenues2 = new Venue("ThunderDome", "129 BeyondThe Street");
-    //   testVenues2.Save();
-    //
-    //   //Act
-    //   testBand.AddVenue(testVenues1);
-    //   List<Venue> result = testBand.GetVenues();
-    //   List<Venue> testList = new List<Venue> {testVenues1};
-    //
-    //   //Assert
-    //   Assert.Equal(testList, result);
-    // }
+     //Assert
+     Assert.Equal(testList, savedBand);
+    }
+
+    [Fact]
+    public void Test_AddBand_AddsBandToShow()
+    {
+      //Arrange
+      Band testBand = new Band("Nick Cave and the Bad Seeds", "Art Rock");
+      testBand.Save();
+      Show testShow = new Show(testBand.GetId(), 3, new DateTime(2017, 12, 30));
+      testShow.Save();
+
+
+      // Band testBand2 = new Band("Washed Out", "Chill Wave");
+      // testBand2.Save();
+
+      //Act
+      testShow.AddBand(testBand);
+      // testShow.AddBand(testBand2);
+
+      List<Band> result = testShow.GetBand();
+      List<Band> testList = new List<Band>{testBand};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
+    [Fact]
+    public void GetVenue_Returns_VenueList()
+    {
+      //Arrange
+      Venue testVenue = new Venue("The Collosseum", "456 Great Big Way");
+      testVenue.Save();
+      Show testShow = new Show(17, testVenue.GetId(), new DateTime(2017, 08, 04));
+      testShow.Save();
+
+      //Act
+      testShow.AddVenue(testVenue);
+      List<Venue> result = testShow.GetVenue();
+      List<Venue> testList = new List<Venue> {testVenue};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
 
     // //
-    // [Fact]
-    // public void AddVenue_AddsVenuesToBand_VenuesList()
-    // {
-    //   //Arrange
-    //   Band testBand = new Band("Tom Waits", "Just the best... like... ever");
-    //   testBand.Save();
-    //
-    //   Venue testVenues = new Venue("The Collosseum", "89 Out West Blvd");
-    //   testVenues.Save();
-    //
-    //   //Act
-    //   testBand.AddVenue(testVenues);
-    //
-    //   List<Venue> result = testBand.GetVenues();
-    //   List<Venue> testList = new List<Venue>{testVenues};
-    //
-    //   //Assert
-    //   Assert.Equal(testList, result);
-    // }
-    //
-    //
-    //
+    [Fact]
+    public void AddVenue_AddsVenuesToBand_VenuesList()
+    {
+      //Arrange
+      Venue testVenue = new Venue("The Collosseum", "89 Out West Blvd");
+      testVenue.Save();
+      Show testShow = new Show(17, testVenue.GetId(), new DateTime(2017, 08, 04));
+      testShow.Save();
+
+      //Act
+      testShow.AddVenue(testVenue);
+
+      List<Venue> result = testShow.GetVenue();
+      List<Venue> testList = new List<Venue>{testVenue};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
+
+
     // [Fact]
     // public void Delete_DeletesVenueAssociationsFromDatabase_VenueList()
     // {
