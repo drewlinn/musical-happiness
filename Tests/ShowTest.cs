@@ -80,7 +80,23 @@ namespace BandTracker
     }
 
     [Fact]
-    public void GetBand_Returns_BandList()
+    public void GetBand_Returns_BandObject()
+    {
+      //Arrange
+      Band testBand = new Band("Townes Van Zandt", "Country/Blues");
+      testBand.Save();
+      Show testShow = new Show(testBand.GetId(), 3, new DateTime(2017, 04, 29));
+      testShow.Save();
+
+      //Act
+      Band result = testShow.GetBand();
+
+      //Assert
+      Assert.Equal(testBand, result);
+    }
+
+    [Fact]
+    public void GetBandsList_Returns_BandList()
     {
      //Arrange
      Band testBand = new Band("Townes Van Zandt", "Country/Blues");
@@ -90,12 +106,13 @@ namespace BandTracker
 
      //Act
      testShow.AddBand(testBand);
-     List<Band> savedBand = testShow.GetBand();
+     List<Band> savedBand = testShow.GetBandsList();
      List<Band> testList = new List<Band> {testBand};
 
      //Assert
      Assert.Equal(testList, savedBand);
     }
+
 
     [Fact]
     public void Test_AddBand_AddsBandToShow()
@@ -109,7 +126,7 @@ namespace BandTracker
       //Act
       testShow.AddBand(testBand);
 
-      List<Band> result = testShow.GetBand();
+      List<Band> result = testShow.GetBandsList();
       List<Band> testList = new List<Band>{testBand};
 
       //Assert
@@ -117,7 +134,23 @@ namespace BandTracker
     }
 
     [Fact]
-    public void GetVenue_Returns_VenueList()
+    public void GetVenue_Returns_VenueObject()
+    {
+      //Arrange
+      Venue testVenue = new Venue("The Collosseum", "456 Great Big Way");
+      testVenue.Save();
+      Show testShow = new Show(17, testVenue.GetId(), new DateTime(2017, 08, 04));
+      testShow.Save();
+
+      //Act
+      Venue result = testShow.GetVenue();
+
+      //Assert
+      Assert.Equal(testVenue, result);
+    }
+
+    [Fact]
+    public void GetVenuesList_Returns_VenueList()
     {
       //Arrange
       Venue testVenue = new Venue("The Collosseum", "456 Great Big Way");
@@ -127,7 +160,7 @@ namespace BandTracker
 
       //Act
       testShow.AddVenue(testVenue);
-      List<Venue> result = testShow.GetVenue();
+      List<Venue> result = testShow.GetVenuesList();
       List<Venue> testList = new List<Venue> {testVenue};
 
       //Assert
@@ -146,7 +179,7 @@ namespace BandTracker
       //Act
       testShow.AddVenue(testVenue);
 
-      List<Venue> result = testShow.GetVenue();
+      List<Venue> result = testShow.GetVenuesList();
       List<Venue> testList = new List<Venue>{testVenue};
 
       //Assert
@@ -165,7 +198,7 @@ namespace BandTracker
       //Act
       testVenue.Delete();
 
-      List<Venue> resultShowVenue = testShow.GetVenue();
+      List<Venue> resultShowVenue = testShow.GetVenuesList();
       List<Venue> testShowVenue = new List<Venue> {};
 
       //Assert
@@ -185,7 +218,7 @@ namespace BandTracker
       //Act
       testBand.Delete();
 
-      List<Band> resultShowBand = testShow.GetBand();
+      List<Band> resultShowBand = testShow.GetBandsList();
       List<Band> testShowBand = new List<Band> {};
 
       //Assert

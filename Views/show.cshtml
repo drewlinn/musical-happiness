@@ -1,6 +1,17 @@
-<h3>Who's Playing?: @band.GetBandName()</h3>
-<h3>Where?: @venue.GetVenueName()</h3>
-<h3>When?: @show.GetDate()</h3>
+@foreach(var band in @Model["band"])
+{
+  <h3>Who's Playing?: @band.GetBandName()</h3>
+  <h4>@band.GetGenre()</h4>
+}
+@foreach(var venue in @Model["venue"])
+{
+  <h3>Where?: @venue.GetVenueName()</h3>
+  <h4>@venue.GetAddress()</h4>
+}
+@foreach(var show in @Model["show"])
+{
+  <h3>When?: @show.GetDate()</h3>
+}
 
 <p><a href="/shows">View all shows</a></p>
 <p><a href="/show/new">Add a another show</a></p>

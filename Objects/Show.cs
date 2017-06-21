@@ -177,7 +177,7 @@ namespace BandTracker.Objects
       conn.Close();
     }
 
-    public List<Band> GetBand()
+    public List<Band> GetBandsList()
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
@@ -189,7 +189,7 @@ namespace BandTracker.Objects
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      List<Band> band = new List<Band>{};
+      List<Band> bands = new List<Band>{};
 
       while(rdr.Read())
       {
@@ -197,8 +197,43 @@ namespace BandTracker.Objects
         string name = rdr.GetString(1);
         string genre = rdr.GetString(2);
         Band newBand = new Band(name, genre, bandId);
-        band.Add(newBand);
+        bands.Add(newBand);
       }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return bands;
+    }
+
+    public Band GetBand()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM bands WHERE id = @bandId;", conn);
+      SqlParameter bandIdParam = new SqlParameter("@bandId", this.GetBandId().ToString());
+
+      cmd.Parameters.Add(bandIdParam);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int bandId = 0;
+      string bandName = null;
+      string bandGenre = null;
+
+      while(rdr.Read())
+      {
+        bandId = rdr.GetInt32(0);
+        bandName = rdr.GetString(1);
+        bandGenre = rdr.GetString(2);
+      }
+      Band band = new Band(bandName, bandGenre, bandId);
+
       if (rdr != null)
       {
         rdr.Close();
@@ -210,7 +245,7 @@ namespace BandTracker.Objects
       return band;
     }
 
-    //Add band's id and venue's id to shows table
+    // Add band's id and venue's id to shows table
     public void AddBand(Band newBand)
     {
       SqlConnection conn = DB.Connection();
@@ -228,7 +263,7 @@ namespace BandTracker.Objects
       }
     }
 
-    public List<Venue> GetVenue()
+    public Venue GetVenue()
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
@@ -237,19 +272,20 @@ namespace BandTracker.Objects
       SqlParameter venueIdParam = new SqlParameter("@venueId", this.GetVenueId().ToString());
 
       cmd.Parameters.Add(venueIdParam);
-
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      List<Venue> venue = new List<Venue>{};
+      int venueId = 0;
+      string venueName = null;
+      string venueAddress = null;
 
       while(rdr.Read())
       {
-        int venueId = rdr.GetInt32(0);
-        string name = rdr.GetString(1);
-        string address = rdr.GetString(2);
-        Venue newVenue = new Venue(name, address, venueId);
-        venue.Add(newVenue);
+        venueId = rdr.GetInt32(0);
+        venueName = rdr.GetString(1);
+        venueAddress = rdr.GetString(2);
       }
+      Venue venue = new Venue(venueName, venueAddress, venueId);
+
       if (rdr != null)
       {
         rdr.Close();
@@ -261,7 +297,40 @@ namespace BandTracker.Objects
       return venue;
     }
 
-    //Add band's id and venue's id to shows table
+    public List<Venue> GetVenuesList()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM venues WHERE id = @venueId;", conn);
+      SqlParameter venueIdParam = new SqlParameter("@venueId", this.GetVenueId().ToString());
+
+      cmd.Parameters.Add(venueIdParam);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      List<Venue> venues = new List<Venue>{};
+
+      while(rdr.Read())
+      {
+        int venueId = rdr.GetInt32(0);
+        string name = rdr.GetString(1);
+        string address = rdr.GetString(2);
+        Venue newVenue = new Venue(name, address, venueId);
+        venues.Add(newVenue);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return venues;
+    }
+
+    // Add band's id and venue's id to shows table
     public void AddVenue(Venue newVenue)
     {
       SqlConnection conn = DB.Connection();
